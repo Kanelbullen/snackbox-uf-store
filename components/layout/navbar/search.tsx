@@ -1,6 +1,7 @@
 'use client';
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { Input } from 'components/ui/input';
 import { createUrl } from 'lib/utils';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -26,14 +27,14 @@ export default function Search() {
 
   return (
     <form onSubmit={onSubmit} className="w-max-[550px] relative w-full lg:w-80 xl:w-full">
-      <input
+      <Input
         key={searchParams?.get('q')}
         type="text"
         name="search"
-        placeholder="Search for products..."
+        placeholder="Sök efter produkter..."
         autoComplete="off"
         defaultValue={searchParams?.get('q') || ''}
-        className="w-full rounded-lg border bg-white px-4 py-2 text-sm text-black placeholder:text-neutral-500 dark:border-neutral-800 dark:bg-transparent dark:text-white dark:placeholder:text-neutral-400"
+        className="w-full rounded-lg border px-4 py-2 text-sm text-foreground placeholder:text-neutral-500 dark:border-neutral-800 dark:bg-transparent dark:text-white dark:placeholder:text-neutral-400"
       />
       <div className="absolute right-0 top-0 mr-3 flex h-full items-center">
         <MagnifyingGlassIcon className="h-4" />

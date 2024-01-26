@@ -1,54 +1,99 @@
-const plugin = require('tailwindcss/plugin');
-
 /** @type {import('tailwindcss').Config} */
+
+const { fontFamily, screens } = require('tailwindcss/defaultTheme');
+
 module.exports = {
-  content: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  darkMode: ['class'],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}'
+  ],
+  prefix: '',
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px'
+      }
+    },
+    screens: {
+      xs: '440px',
+      ...screens
+    },
     extend: {
-      fontFamily: {
-        sans: ['var(--font-geist-sans)']
+      colors: {
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))'
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))'
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))'
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))'
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))'
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))'
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))'
+        }
+      },
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)'
       },
       keyframes: {
-        fadeIn: {
-          from: { opacity: 0 },
-          to: { opacity: 1 }
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' }
         },
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-100%)' }
-        },
-        blink: {
-          '0%': { opacity: 0.2 },
-          '20%': { opacity: 1 },
-          '100% ': { opacity: 0.2 }
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' }
         }
       },
       animation: {
-        fadeIn: 'fadeIn .3s ease-in-out',
-        carousel: 'marquee 60s linear infinite',
-        blink: 'blink 1.4s both infinite'
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out'
+      },
+      fontFamily: {
+        margarine: ['var(--margarine)', ...fontFamily.sans],
+        manrope: ['var(--manrope)', ...fontFamily.sans]
+      },
+      fontSize: {
+        xs: ['.75rem', { lineHeight: '16px', letterSpacing: '0.0025em' }],
+        sm: ['.875rem', { lineHeight: '20px', letterSpacing: '0em' }],
+        base: ['1rem', { lineHeight: '24px', letterSpacing: '0em' }],
+        lg: ['1.125rem', { lineHeight: '26px', letterSpacing: '-0.0025em' }],
+        xl: ['1.25rem', { lineHeight: '28px', letterSpacing: '-0.005em' }],
+        '2xl': ['1.5rem', { lineHeight: '30px', letterSpacing: '-0.00625em' }],
+        '3xl': ['1.75rem', { lineHeight: '36px', letterSpacing: '-0.0075em' }],
+        '4xl': ['2.1875rem', { lineHeight: '40px', letterSpacing: '-0.01em' }],
+        '5xl': ['3.75rem', { lineHeight: '60px', letterSpacing: '-0.025em' }]
       }
     }
   },
-  future: {
-    hoverOnlyWhenSupported: true
-  },
-  plugins: [
-    require('@tailwindcss/container-queries'),
-    require('@tailwindcss/typography'),
-    plugin(({ matchUtilities, theme }) => {
-      matchUtilities(
-        {
-          'animation-delay': (value) => {
-            return {
-              'animation-delay': value
-            };
-          }
-        },
-        {
-          values: theme('transitionDelay')
-        }
-      );
-    })
-  ]
+  plugins: [require('tailwindcss-animate')]
 };

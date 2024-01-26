@@ -2,20 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@layer base {
+  :root {
+    --background: 120 60% 99%;
+    --foreground: 131 30% 18%;
+
+    --card: 120 60% 99%;
+    --card-foreground: 131 30% 18%;
+
+    --popover: 120 60% 99%;
+    --popover-foreground: 131 30% 18%;
+
+    --primary: 131 41% 46%;
+    --primary-foreground: 120 43% 97%;
+
+    --secondary: 132 50% 33%;
+    --secondary-foreground: 120 43% 97%;
+
+    --muted: 131 2% 46%;
+    --muted-foreground: 130 4% 33%;
+
+    --accent: 126 37% 69%;
+    --accent-foreground: 131 30% 18%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 124 8% 78%;
+    --input: 124 8% 78%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
   }
 }
 
-@supports (font: -apple-system-body) and (-webkit-appearance: none) {
-  img[loading='lazy'] {
-    clip-path: inset(0.6px);
+@layer base {
+  * {
+    border-color: hsl(var(--border));
   }
-}
-
-a,
-input,
-button {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-50 dark:focus-visible:ring-neutral-600 dark:focus-visible:ring-offset-neutral-900;
+  body {
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+  }
 }
