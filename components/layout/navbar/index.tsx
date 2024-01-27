@@ -14,7 +14,7 @@ export default async function Navbar() {
 
   return (
     <div className="sticky top-0 z-30 bg-accent">
-      <nav className="mx-auto flex w-full max-w-6xl items-center px-6 py-3">
+      <nav className="mx-auto flex w-full max-w-7xl items-center px-6 py-3 md:px-4 min-[1320px]:px-0">
         <div className="block flex-none md:hidden">
           <MobileMenu menu={menu} />
         </div>
