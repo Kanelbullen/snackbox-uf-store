@@ -19,15 +19,14 @@ export default async function SearchPage({
   const { sortKey, reverse } = sorting.find((item) => item.slug === sort) || defaultSort;
 
   const products = await getProducts({ sortKey, reverse, query: searchValue });
-  const resultsText = products.length > 1 ? 'results' : 'result';
 
   return (
     <>
       {searchValue ? (
         <p className="mb-4">
           {products.length === 0
-            ? 'There are no products that match '
-            : `Showing ${products.length} ${resultsText} for `}
+            ? 'Vi hittade inga resultat som matchade din sökning '
+            : `Visar ${products.length} resultat för `}
           <span className="font-bold">&quot;{searchValue}&quot;</span>
         </p>
       ) : null}
