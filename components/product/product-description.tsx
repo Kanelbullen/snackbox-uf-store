@@ -25,7 +25,11 @@ export function ProductDescription({ product }: { product: Product }) {
         />
       ) : null}
 
-      <AddToCart variants={product.variants} availableForSale={product.availableForSale} />
+      <AddToCart
+        variants={product.variants}
+        availableForSale={product.availableForSale}
+        size="lg"
+      />
     </>
   );
 }

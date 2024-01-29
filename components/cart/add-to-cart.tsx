@@ -4,27 +4,34 @@ import { PlusIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { addItem } from 'components/cart/actions';
 import LoadingDots from 'components/loading-dots';
-import { Button } from 'components/ui/button';
+import { Button, ButtonProps } from 'components/ui/button';
 import { ProductVariant } from 'lib/shopify/types';
 import { useSearchParams } from 'next/navigation';
 import { useFormState, useFormStatus } from 'react-dom';
 
+interface SubmitButtonProps extends ButtonProps {
+  availableForSale: boolean;
+  selectedVariantId: string | undefined;
+}
+
+interface AddToCartButtonProps extends ButtonProps {
+  availableForSale: boolean;
+  variants: ProductVariant[];
+}
+
 function SubmitButton({
   availableForSale,
   selectedVariantId,
-  className
-}: {
-  availableForSale: boolean;
-  selectedVariantId: string | undefined;
-  className?: string;
-}) {
+  className,
+  ...props
+}: SubmitButtonProps) {
   const { pending } = useFormStatus();
 
   const disabledClasses = 'cursor-not-allowed opacity-60 hover:opacity-60';
 
   if (!availableForSale) {
     return (
-      <Button aria-disabled className={clsx('w-full', disabledClasses, className)}>
+      <Button aria-disabled className={clsx('w-full', disabledClasses, className)} {...props}>
         Out Of Stock
       </Button>
     );
@@ -36,6 +43,7 @@ function SubmitButton({
         aria-label="Please select an option"
         aria-disabled
         className={clsx('relative w-full', disabledClasses, className)}
+        {...props}
       >
         <div className="absolute left-0 ml-4">
           <PlusIcon className="h-5" />
@@ -60,6 +68,7 @@ function SubmitButton({
         },
         className
       )}
+      {...props}
     >
       <div className="absolute left-0 ml-4">
         {pending ? <LoadingDots className="mb-3 bg-white" /> : <PlusIcon className="h-5" />}
@@ -72,12 +81,9 @@ function SubmitButton({
 export function AddToCart({
   variants,
   availableForSale,
-  className
-}: {
-  variants: ProductVariant[];
-  availableForSale: boolean;
-  className?: string;
-}) {
+  className,
+  ...props
+}: AddToCartButtonProps) {
   const [message, formAction] = useFormState(addItem, null);
   const searchParams = useSearchParams();
   const defaultVariantId = variants.length === 1 ? variants[0]?.id : undefined;
@@ -95,6 +101,7 @@ export function AddToCart({
         availableForSale={availableForSale}
         selectedVariantId={selectedVariantId}
         className={className}
+        {...props}
       />
       <p aria-live="polite" className="sr-only" role="status">
         {message}
