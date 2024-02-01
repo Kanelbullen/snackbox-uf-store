@@ -32,7 +32,7 @@ function SubmitButton({
   if (!availableForSale) {
     return (
       <Button aria-disabled className={clsx('w-full', disabledClasses, className)} {...props}>
-        Out Of Stock
+        Slut i lager
       </Button>
     );
   }
@@ -40,7 +40,7 @@ function SubmitButton({
   if (!selectedVariantId) {
     return (
       <Button
-        aria-label="Please select an option"
+        aria-label="Vänligen välj ett alternativ"
         aria-disabled
         className={clsx('relative w-full', disabledClasses, className)}
         {...props}
@@ -48,7 +48,7 @@ function SubmitButton({
         <div className="absolute left-0 ml-4">
           <PlusIcon className="h-5" />
         </div>
-        Add To Cart
+        Lägg i påse
       </Button>
     );
   }
@@ -58,7 +58,7 @@ function SubmitButton({
       onClick={(e: React.FormEvent<HTMLButtonElement>) => {
         if (pending) e.preventDefault();
       }}
-      aria-label="Add to cart"
+      aria-label="Lägg i påse"
       aria-disabled={pending}
       className={clsx(
         'relative w-full',
@@ -73,7 +73,7 @@ function SubmitButton({
       <div className="absolute left-0 ml-4">
         {pending ? <LoadingDots className="mb-3 bg-white" /> : <PlusIcon className="h-5" />}
       </div>
-      Add To Cart
+      Lägg i påse
     </Button>
   );
 }
