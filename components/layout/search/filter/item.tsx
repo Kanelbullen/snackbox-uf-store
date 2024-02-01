@@ -17,15 +17,12 @@ function PathFilterItem({ item }: { item: PathFilterItem }) {
   newParams.delete('q');
 
   return (
-    <li className="mt-2 flex text-black dark:text-white" key={item.title}>
+    <li className="mt-2 flex text-foreground" key={item.title}>
       <DynamicTag
         href={createUrl(item.path, newParams)}
-        className={clsx(
-          'w-full text-sm underline-offset-4 hover:underline dark:hover:text-neutral-100',
-          {
-            'underline underline-offset-4': active
-          }
-        )}
+        className={clsx('w-full text-sm underline-offset-4 hover:underline', {
+          'underline underline-offset-4': active
+        })}
       >
         {item.title}
       </DynamicTag>
