@@ -1,4 +1,6 @@
+import CookiePopup from 'components/cookie-popup';
 import Navbar from 'components/layout/navbar';
+import { Toaster } from 'components/ui/sonner';
 import { ensureStartsWith } from 'lib/utils';
 import { Manrope, Margarine } from 'next/font/google';
 import { ReactNode, Suspense } from 'react';
@@ -50,6 +52,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <Suspense>
           <main>{children}</main>
         </Suspense>
+        <Toaster />
+        <CookiePopup />
       </body>
     </html>
   );
