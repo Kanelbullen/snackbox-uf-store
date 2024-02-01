@@ -1,7 +1,9 @@
 import { ThreeItemGrid } from 'components/grid/three-items';
 import Footer from 'components/layout/footer';
 import { Button } from 'components/ui/button';
+import { getCollectionProducts } from 'lib/shopify';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Suspense } from 'react';
 
 export const runtime = 'edge';
@@ -14,26 +16,25 @@ export const metadata = {
 };
 
 export default async function HomePage() {
+  const heroProduct = await getCollectionProducts({ collection: 'hidden-hero-product' });
+
   return (
     <>
       <header className="bg-primary text-primary-foreground">
-        <div className="mx-auto grid min-h-[572px] w-full max-w-6xl grid-cols-1 grid-rows-2 items-center gap-1 px-6 py-10 md:grid-cols-2 md:grid-rows-1">
-          <div>
-            <h2 className="font-margarine text-4xl">Lördags lådan</h2>
-            <p className="mt-2 text-xl font-bold">
-              Våran mest populära snackbox perfekt för att
-              <wbr /> avnjuta själv eller med andra vart som hälst.
-            </p>
-            <Button size="lg" variant="secondary" className="mt-2 font-bold">
-              Köp nu
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-1 md:grid md:grid-cols-2 md:grid-rows-1">
+          <div className="px-6">
+            <h2 className="font-margarine text-4xl">{heroProduct[0]?.title}</h2>
+            <p className="mt-2 text-xl font-bold">{heroProduct[0]?.description}</p>
+            <Button size="lg" variant="secondary" className="mt-2 font-bold" asChild>
+              <Link href={`/product/${heroProduct[0]?.handle}`}>Köp nu</Link>
             </Button>
           </div>
           <Image
-            src="/lördags-lådan.webp"
-            alt="Bild på lördags lådan"
-            height={100}
+            src={heroProduct[0]?.featuredImage.url ? heroProduct[0].featuredImage.url : ''}
+            alt={`Bild på ${heroProduct[0]?.title}`}
+            height={1000}
             width={1000}
-            className="max-h-[480px] object-contain"
+            className="mt-3 max-h-[480px] object-contain md:mt-0 md:max-h-none md:w-full"
           />
         </div>
       </header>
