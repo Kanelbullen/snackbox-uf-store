@@ -16,7 +16,7 @@ export default function ProductGridItems({ products }: { products: Product[] }) 
                 src={product.featuredImage?.url}
                 alt={product.title}
                 sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className="w-full object-contain transition duration-300 ease-in-out group-hover:scale-105"
+                className="h-full w-full object-cover transition duration-300 ease-in-out group-hover:scale-105"
                 width={product.featuredImage.width}
                 height={product.featuredImage.height}
               />
