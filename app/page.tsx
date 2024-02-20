@@ -23,7 +23,7 @@ export default async function HomePage() {
     <>
       <header className="bg-primary text-primary-foreground">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-1 md:grid md:grid-cols-2 md:grid-rows-1">
-          <div className="px-6">
+          <div className="px-6 pb-8 pt-16 md:pb-0 md:pt-0">
             <h2 className="font-margarine text-4xl">{heroProduct[0]?.title}</h2>
             <p className="mt-2 text-xl font-bold">{heroProduct[0]?.description}</p>
             <Button size="lg" variant="secondary" className="mt-2 font-bold" asChild>
