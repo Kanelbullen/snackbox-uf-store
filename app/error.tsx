@@ -11,7 +11,7 @@ export default function Error({ reset }: { reset: () => void }) {
         testa igen.
       </p>
       <Button size="lg" onClick={() => reset()}>
-        Try Again
+        Försök igen
       </Button>
     </div>
   );
