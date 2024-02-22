@@ -11,12 +11,12 @@ function ThreeItemGridItem({ item }: { item: Product }) {
       <Link className="group relative block" href={`/product/${item.handle}`}>
         <div className="aspect-square w-full overflow-clip rounded-sm">
           <Image
-            src={item.featuredImage?.url}
+            src={item.featuredImage?.url ? item.featuredImage.url : ''}
             alt={item.title}
             sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
             className="h-full w-full object-cover transition duration-300 ease-in-out group-hover:scale-105"
-            width={item.featuredImage.width}
-            height={item.featuredImage.height}
+            width={item.featuredImage?.width ? item.featuredImage.width : 0}
+            height={item.featuredImage?.height ? item.featuredImage.height : 0}
           />
         </div>
 
