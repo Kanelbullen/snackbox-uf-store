@@ -14,7 +14,7 @@ export default function ProductGridItems({ products }: { products: Product[] }) 
             <div className="aspect-square w-full overflow-clip rounded-sm">
               <Image
                 src={product.featuredImage?.url ? product.featuredImage.url : ''}
-                alt={product.title}
+                alt=""
                 sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
                 className="h-full w-full object-cover transition duration-300 ease-in-out group-hover:scale-105"
                 width={product.featuredImage?.width ? product.featuredImage.width : 0}
@@ -27,7 +27,7 @@ export default function ProductGridItems({ products }: { products: Product[] }) 
                 {product.title}
               </span>
               <Price
-                className=" text-muted-foreground"
+                className="text-muted-foreground"
                 amount={product.priceRange.maxVariantPrice.amount}
                 currencyCode={product.priceRange.maxVariantPrice.currencyCode}
               />

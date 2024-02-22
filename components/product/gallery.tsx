@@ -35,7 +35,7 @@ export function Gallery({ images }: { images: { src: string; altText: string }[]
             fill
             sizes="(min-width: 1024px) 66vw, 100vw"
             alt={images[imageIndex]?.altText as string}
-            src={images[imageIndex]?.src as string}
+            src={images[imageIndex]?.src ? (images[imageIndex]?.src as string) : ''}
             priority={true}
           />
         )}
