@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import CookiePopup from 'components/cookie-popup';
 import Navbar from 'components/layout/navbar';
 import { Toaster } from 'components/ui/sonner';
@@ -54,6 +55,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         </Suspense>
         <Toaster />
         <CookiePopup />
+        <Analytics />
       </body>
     </html>
   );
