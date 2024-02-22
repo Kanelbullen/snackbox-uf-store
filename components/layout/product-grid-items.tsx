@@ -11,7 +11,7 @@ export default function ProductGridItems({ products }: { products: Product[] }) 
       {products.map((product) => (
         <Grid.Item key={product.handle} className="animate-fadeIn">
           <Link className="group relative block" href={`/product/${product.handle}`}>
-            <div className="aspect-square w-full overflow-clip">
+            <div className="aspect-square w-full overflow-clip rounded-sm">
               <Image
                 src={product.featuredImage?.url}
                 alt={product.title}
