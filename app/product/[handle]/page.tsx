@@ -144,7 +144,7 @@ async function RelatedProducts({ id }: { id: string }) {
                 />
               </div>
 
-              <div className="mt-2 flex justify-between gap-2">
+              <div className="mt-2 flex flex-wrap justify-between gap-x-2 gap-y-1">
                 <span className="font-bold underline-offset-4 group-hover:underline">
                   {product.title}
                 </span>
