@@ -29,6 +29,7 @@ export default async function Navbar() {
                 {SITE_NAME}
               </div>
             </Link>
+
             {menu.length ? (
               <ul className="hidden gap-6 text-sm md:flex md:items-center">
                 {menu.map((item: Menu) => (
@@ -38,6 +39,9 @@ export default async function Navbar() {
                     </Link>
                   </li>
                 ))}
+                {/* <Link href="/quiz" className="underline-offset-4 hover:underline">
+                      Quiz
+                </Link> */}
               </ul>
             ) : null}
           </div>

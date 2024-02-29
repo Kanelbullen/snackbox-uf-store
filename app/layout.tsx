@@ -3,6 +3,7 @@ import CookiePopup from 'components/cookie-popup';
 import Navbar from 'components/layout/navbar';
 import { Toaster } from 'components/ui/sonner';
 import { ensureStartsWith } from 'lib/utils';
+import { Metadata } from 'next';
 import { Manrope, Margarine } from 'next/font/google';
 import { ReactNode, Suspense } from 'react';
 import './globals.css';
@@ -25,7 +26,7 @@ const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
 const twitterCreator = TWITTER_CREATOR ? ensureStartsWith(TWITTER_CREATOR, '@') : undefined;
 const twitterSite = TWITTER_SITE ? ensureStartsWith(TWITTER_SITE, 'https://') : undefined;
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     default: SITE_NAME!,
